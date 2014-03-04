@@ -102,19 +102,19 @@ sudo rm -rf ~vendor
 #
 sudo service apache2 restart
 
-printf "----------------------------------------\n"
-printf "To create a Phalcon Project:\n"
-printf "----------------------------------------\n"
-printf "$ cd /vagrant/www\n"
-printf "$ phalcon project projectname\n\n"
+echo -e "----------------------------------------\n"
+echo -e "To create a Phalcon Project:\n"
+echo -e "----------------------------------------\n"
+echo -e "$ cd /vagrant/www\n"
+echo -e "$ phalcon project projectname\n\n"
 
 
-printf "----------------------------------------\n"
-printf "In our instance we only have one VHost setup\n"
-printf "For the /vagrant/www/public folder. If you create\n"
-printf "a project named <site> for example, you 2 \n"
-printf "options:\n"
-printf "  1: Create a new VHost\n"
-printf "  2: Move the project to the already setup in \n"
-printf "     /vagrant/www \n"
-printf "----------------------------------------\n"
+echo -e "----------------------------------------\n"
+echo -e "In our instance we only have one VHost setup\n"
+echo -e "For the /vagrant/www/public folder. If you create\n"
+echo -e "a project named <site> for example, you 2 \n"
+echo -e "options:\n"
+echo -e "  1: Create a new VHost\n"
+echo -e "  2: Move the project to the already setup in \n"
+echo -e "     /vagrant/www \n"
+echo -e "----------------------------------------\n"

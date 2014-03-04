@@ -16,8 +16,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # optional power Options (Remove if desired)
   config.vm.provider :virtualbox do |v|
     v.customize ["modifyvm", :id, "--memory", "500"]
-    v.customize ["modifyvm", :id, "--cpus", "2"]
-    v.customize ["modifyvm", :id, "--ioapic", "on"]
+
+    #
+    # Uncomment the Bottom two lines to enable  mulitple CPU Cores in the Virtual Machine
+    #
+    #v.customize ["modifyvm", :id, "--cpus", "2"]
+    #v.customize ["modifyvm", :id, "--ioapic", "on"]
+
   end
 
   # Provisioning Script
