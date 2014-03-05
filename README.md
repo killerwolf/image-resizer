@@ -122,7 +122,7 @@ If you wanted to disable a site:
 If you are using Linux you can use the built in Terminal to do everything.
 The same goes with OSX.
 
-For Windows, I prefer using [Git SCM](http://git-scm.com/) and using the Bash.
+For Windows, you can use [Git SCM](http://git-scm.com/) and Bash.
 
 # Guest Additions
 
