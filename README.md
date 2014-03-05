@@ -1,4 +1,4 @@
-#Vagrant + Phaalcon
+#Vagrant + Phalcon
 
 This is a simple vagrant setup to get loaded with core development tools
 to build a powerful PHP application primary focused on **Phalcon Framework**.
