@@ -1,7 +1,7 @@
-#Vagrant JREAM Preferred
+#Vagrant + Phaalcon
 
 This is a simple vagrant setup to get loaded with core development tools
-to build a powerful PHP application primary focused on **PhalconPHP**.
+to build a powerful PHP application primary focused on **Phalcon Framework**.
 
 
 ## Overview
@@ -32,8 +32,8 @@ use more than one core if you like, simply uncomment these two lines in the same
   - PHP 5.5
   - MySQL 5.5 (root:<none>)
 - Git
-- [PhalconPHP](http://phalconphp.com/en/)
-- [PhalconPHP DevTools](https://github.com/phalcon/phalcon-devtools)
+- [Phalcon](http://phalconphp.com/en/)
+- [Phalcon DevTools](https://github.com/phalcon/phalcon-devtools)
 - [Redis 2.8](http://redis.io/)
 - [Composer (PHP)](https://getcomposer.org)
 
