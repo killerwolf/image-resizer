@@ -45,7 +45,14 @@ sudo /etc/init.d/redis-server restart
 sudo cp /etc/mysql/my.cnf /etc/mysql/my.bkup.cnf
 # Note: Since the MySQL bind-address has a tab cahracter I comment out the end line
 sudo sed -i 's/bind-address/bind-address = 0.0.0.0#/' /etc/mysql/my.cnf
+
+#
+# Grant All Priveleges to ROOT for remote access
+#
+mysql -u root -Bse "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '' WITH GRANT OPTION;"
 sudo service mysql restart
+
+
 
 #
 # Composer for PHP
@@ -56,20 +63,19 @@ sudo mv composer.phar /usr/local/bin/composer
 #
 # Apache VHost
 #
-sudo a2enmod rewrite
 cd ~
 echo '<VirtualHost *:80>
-        DocumentRoot /vagrant/www/public
+        DocumentRoot /vagrant/www
 </VirtualHost>
 
-<Directory "/vagrant/www/public">
+<Directory "/vagrant/www">
         Options Indexes Followsymlinks
         AllowOverride All
         Require all granted
 </Directory>' > vagrant.conf
 
 sudo mv vagrant.conf /etc/apache2/sites-available
-sudo a2ensite vagrant
+sudo a2enmod rewrite
 
 #
 # Install PhalconPHP
@@ -100,21 +106,19 @@ sudo rm -rf ~vendor
 #
 # Reload apache
 #
+sudo a2ensite vagrant
+sudo a2dissite 000-default
+sudo service apache2 reload
 sudo service apache2 restart
 
-echo -e "----------------------------------------\n"
+echo -e "----------------------------------------"
 echo -e "To create a Phalcon Project:\n"
-echo -e "----------------------------------------\n"
-echo -e "$ cd /vagrant/www\n"
-echo -e "$ phalcon project projectname\n\n"
+echo -e "----------------------------------------"
+echo -e "$ cd /vagrant/www"
+echo -e "$ phalcon project projectname\n"
+echo -e
+echo -e "Then follow the README.md to copy/paste the VirtualHost!\n"
 
-
-echo -e "----------------------------------------\n"
-echo -e "In our instance we only have one VHost setup\n"
-echo -e "For the /vagrant/www/public folder. If you create\n"
-echo -e "a project named <site> for example, you 2 \n"
-echo -e "options:\n"
-echo -e "  1: Create a new VHost\n"
-echo -e "  2: Move the project to the already setup in \n"
-echo -e "     /vagrant/www \n"
-echo -e "----------------------------------------\n"
+echo -e "----------------------------------------"
+echo -e "Default Site: http://192.168.5.0"
+echo -e "----------------------------------------"
