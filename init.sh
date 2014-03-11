@@ -18,7 +18,7 @@ apt-get -q -y install mysql-server
 #
 # PHP
 #
-sudo apt-get install -y php5 php5-dev apache2 libapache2-mod-php5 php5-mysql
+sudo apt-get install -y php5 php5-dev apache2 libapache2-mod-php5 php5-mysql php5-curl
 
 #
 # Redis
@@ -89,6 +89,7 @@ sudo ./install
 echo "extension=phalcon.so" > phalcon.ini
 sudo mv phalcon.ini /etc/php5/mods-available
 sudo php5enmod phalcon
+sudo php5enmod curl
 
 #
 # Install PhalconPHP DevTools
