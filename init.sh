@@ -26,6 +26,11 @@ sudo apt-get install -y php5 php5-dev apache2 libapache2-mod-php5 php5-mysql php
 sudo apt-get install -y redis-server
 
 #
+# MongoDB
+#
+sudo apt-get install mongodb-clients mongodb-server
+
+#
 # Utilities
 #
 sudo apt-get install -y curl htop git-core
@@ -111,6 +116,7 @@ sudo a2ensite vagrant
 sudo a2dissite 000-default
 sudo service apache2 reload
 sudo service apache2 restart
+sudo service mongodb restart
 
 echo -e "----------------------------------------"
 echo -e "To create a Phalcon Project:\n"

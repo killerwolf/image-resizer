@@ -32,6 +32,7 @@ By default this setup uses 500MB RAM. You can change this in `Vagrantfile` and s
 - [Phalcon](http://phalconphp.com/en/)
 - [Phalcon DevTools](https://github.com/phalcon/phalcon-devtools)
 - [Redis 2.8](http://redis.io/)
+- [MongoDB 2.0.4](https://www.mongodb.org/)
 - [Composer (PHP)](https://getcomposer.org)
 
 # Installation Instructions
@@ -142,6 +143,14 @@ You should be able to access the following URL's:
 Simply go to your Host computer and open any file explorer or IDE you use, and
 open any folder in `/www/`, this is mounted to the Virtual Machine and you'll have
 realtime changes.
+
+# Working within SSH
+
+Files in the shared directory of `www` are by default given ownership of `www-data:www-data` so
+that you will have no problems with saving cached files. Even with the `vagrant` user within
+the `www-data` group, and even with `0777` write permissions I could't get the cache to save.
+
+So this simply means, if you edit things in the `www` folder you must run `sudo command` to do so.
 
 # Software Suggestions
 
