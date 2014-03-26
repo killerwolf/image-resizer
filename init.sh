@@ -18,7 +18,7 @@ apt-get -q -y install mysql-server
 #
 # PHP
 #
-sudo apt-get install -y php5 php5-dev apache2 libapache2-mod-php5 php5-mysql php5-curl
+sudo apt-get install -y php5 php5-dev apache2 libapache2-mod-php5 php5-mysql php5-curl libpcre3-dev
 
 #
 # Redis
