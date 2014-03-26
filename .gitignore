@@ -3,5 +3,5 @@
 ._*
 .project
 .settings
-.vagrant
+.vagrant*
 www/vendor*
