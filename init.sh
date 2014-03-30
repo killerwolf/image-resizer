@@ -33,7 +33,7 @@ sudo apt-get install mongodb-clients mongodb-server
 #
 # Utilities
 #
-sudo apt-get install -y curl htop git-core
+sudo apt-get install -y curl htop git-core vim
 
 #
 # Redis Configuration
@@ -95,6 +95,14 @@ echo "extension=phalcon.so" > phalcon.ini
 sudo mv phalcon.ini /etc/php5/mods-available
 sudo php5enmod phalcon
 sudo php5enmod curl
+
+#
+# Update PHP Error Reporting
+#
+sudo sed -i 's/short_open_tag = Off/short_open_tag = On/' /etc/php5/apache2/php.ini
+sudo sed -i 's/error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting = E_ALL/' /etc/php5/apache2/php.ini
+sudo sed -i 's/display_errors = Off/display_errors = On/' /etc/php5/apache2/php.ini 
+
 
 #
 # Install PhalconPHP DevTools
