@@ -33,7 +33,7 @@ sudo apt-get install mongodb-clients mongodb-server
 #
 # Utilities
 #
-sudo apt-get install -y curl htop git-core vim
+sudo apt-get install -y make curl htop git-core vim
 
 #
 # Redis Configuration
