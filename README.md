@@ -1,7 +1,20 @@
 #Vagrant + Phalcon
 
 This is a simple vagrant setup to get loaded with core development tools
-to build a powerful PHP application primary focused on **Phalcon Framework**.
+to build a powerful PHP application focused on **Phalcon Framework**.
+
+## Index
+- [Overview](#overview)
+- [Packages Included](#packages-included)
+- [**Requirements**](#requirements)
+- [**Installation**](#installation)
+- [Vagrant Credentials](#vagrant-credentials)
+- [Create a Phalcon Project](#create-a-phalcon-project)
+- [Create a VHost Record](#create-a-vhost-record)
+- [Local Editing](#local-editing)
+- [Using SSH](#using-ssh)
+- [Troubleshooting Phalcon](#troubleshooting-phalcon)
+- [Software Suggestions](#software-suggestions)
 
 ## Overview
 
@@ -15,13 +28,7 @@ By default this setup uses 500MB RAM. You can change this in `Vagrantfile` and s
     v.customize ["modifyvm", :id, "--cpus", "2"]
     v.customize ["modifyvm", :id, "--ioapic", "on"]
 
-## Requirements
-
-- Operating System: Windows, Linux, or OSX.
-- [Virtualbox](https://www.virtualbox.org) version 4.3.*
-- [Vagrant](http://www.vagrantup.com) version 1.4.*
-
-## Automatically Installs
+## Packages Included
 
 - LAMP Stack
   - Ubuntu Precise (32-Bit)
@@ -30,18 +37,24 @@ By default this setup uses 500MB RAM. You can change this in `Vagrantfile` and s
   - MySQL 5.5
 - Git
 - [Phalcon](http://phalconphp.com/en/)
-- [Phalcon DevTools](https://github.com/phalcon/phalcon-devtools)
+- [Phalcon Dev Tools](https://github.com/phalcon/phalcon-devtools)
 - [Redis 2.8](http://redis.io/)
 - [MongoDB 2.0.4](https://www.mongodb.org/)
 - [Composer (PHP)](https://getcomposer.org)
 
-# Installation Instructions
+## Requirements
 
-First **clone this repository** locally.
+- Operating System: Windows, Linux, or OSX.
+- [Virtualbox](https://www.virtualbox.org) version 4.3.*
+- [Vagrant](http://www.vagrantup.com) version 1.4.*
+
+## Installation
+
+First you need a [Git enabled terminal](#software-suggestions). Then you should **clone this repository** locally.
 
     $ git clone https://github.com/phalcon/vagrant.git
 
-For newer versions of Vagrant and VirtualBox you may need guest additions, so install the plugin:
+For newer versions of Vagrant and VirtualBox you may need **guest additions**, so install the plugin:
 
     # For Linux/OSX
     $ vagrant plugin install vagrant-vbguest
@@ -49,7 +62,7 @@ For newer versions of Vagrant and VirtualBox you may need guest additions, so in
     # For Windows
     $ vagrant plugin install vagrant-windows
 
-Now you are ready to provision with:
+Now you are ready to provision your Virtual Machine, run:
 
     $ vagrant up
 
@@ -61,31 +74,31 @@ inside if you want to change any default settings. Once provisioned, to access t
     # To exit type:
     $ exit
 
-If you want to change your bound address (`192.168.5.0` is the default), edit the `Vagrantfile` and run:
+If you want to change your bound address (`192.168.5.0`), edit `Vagrantfile`, change the ip and run:
 
     $ vagrant reload
 
-If you want to point your Guest Machine (Vagrant OS) to a friendly URL, you could modify your `etc/hosts` file and add the following:
+If you want to point your Guest Machine (The Virtual Machine OS) to a friendly URL, you could modify your `etc/hosts` file and add the following:
 
     192.168.5.0  your-server-name
 
 
-# Default Credentials
+## Vagrant Credentials
 
 These are credentials setup by default:
 
-- Host Address: 192.168.5.0
-- SSH: vagrant / vagrant _(If root password fails, run `$ sudo passwd` and set one)_
-- MySQL: root / (none)
-- Redis: No Password
+- **Host Address**: 192.168.5.0 _(Change in Vagrantfile if you like)_
+- **SSH**: vagrant / vagrant _(If root password fails, run `$ sudo passwd` and set one)_
+- **MySQL**: root / (none)
+- **Redis**: (none)
 
-# Getting Start with PhalconDev Tools
+## Create a Phalcon Project
 
 To create your Phalcon project, head over to the default working directory:
 
     $ cd /vagrant/www
 
-Then run the following command to see your options:
+Then run the following command using the Phalcon Dev Tools to see your options:
 
     $ phalcon
 
@@ -97,7 +110,7 @@ This will create a folder called `superstar` with all your Phalcon files. At thi
 point you have a folder at `/vagrant/www/superstar` and your VirtualHost will need
 to point to `/vagrant/www/superstar/public`
 
-## Create a VirtualHost for a new Phalcon Project:
+## Create a VHost Record
 
 You can have multiple Phalcon projects in subfolders. Make sure to keep your base
 VirtualHost enabled, in our case it's the `vagrant.conf` enabled by default. Then follow the instructions below and take note, you must include the `ServerPath /project/` in your VirtualHost's.
@@ -138,13 +151,16 @@ You should be able to access the following URL's:
     http://192.168.5.0/
     http://192.168.5.0/superstar
 
-# Work on your Projects Locally
+## Local Editing
 
-Simply go to your Host computer and open any file explorer or IDE you use, and
-open any folder in `/www/`, this is mounted to the Virtual Machine and you'll have
-realtime changes.
+On your Host computer open any file explorer or IDE and navigate to `/www/`. 
+This folder is mounted to the Virtual Machine. Any changes to files within here will reflect
+realtime changes in the Virtual Machine.
 
-# Working within SSH
+If you are using .git you should initialize your repository locally rather than on the server.
+This way you will not have to import keys into your Virtual Machine.
+
+## Using SSH
 
 Files in the shared directory of `www` are by default given ownership of `www-data:www-data` so
 that you will have no problems with saving cached files. Even with the `vagrant` user within
@@ -152,7 +168,11 @@ the `www-data` group, and even with `0777` write permissions I could't get the c
 
 So this simply means, if you edit things in the `www` folder you must run `sudo command` to do so.
 
-# Software Suggestions
+## Troubleshooting Phalcon
+
+If you are having trouble with Phalcon in this Vagrant Project (Or on your live server), try compiling in [safe mode](https://github.com/phalcon/cphalcon/issues/2336#issuecomment-40333421).
+
+## Software Suggestions
 
 If you are using Linux you can use the built in Terminal to do everything.
 The same goes with OSX.
