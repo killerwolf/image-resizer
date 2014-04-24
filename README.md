@@ -75,7 +75,7 @@ If you want to point your Guest Machine (Vagrant OS) to a friendly URL, you coul
 These are credentials setup by default:
 
 - Host Address: 192.168.5.0
-- SSH: vagrant / vagrant
+- SSH: vagrant / vagrant _(If root password fails, run `$ sudo passwd` and set one)_
 - MySQL: root / (none)
 - Redis: No Password
 
