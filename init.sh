@@ -115,7 +115,7 @@ rm composer.json
 sudo mkdir /opt/phalcon-tools
 sudo mv ~/vendor/phalcon/devtools/* /opt/phalcon-tools
 sudo ln -s /opt/phalcon-tools/phalcon.php /usr/bin/phalcon
-sudo rm -rf ~vendor
+sudo rm -rf ~/vendor
 
 #
 # Reload apache
