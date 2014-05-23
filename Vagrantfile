@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Connect to IP
   # --------------------
-  config.vm.network :private_network, ip: "192.168.5.0"
+  config.vm.network :private_network, ip: "192.168.5.100"
 
   # Forward to Port
   # --------------------
@@ -32,11 +32,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Provisioning Script
   # --------------------
-  config.vm.provision "shell", path: "init.sh"
+  config.vm.provision "shell", path: "provision/init.sh"
 
   # Synced Folder
   # --------------------
-  config.vm.synced_folder ".", "/vagrant/", :mount_options => [ "dmode=777", "fmode=666" ]
-  config.vm.synced_folder "./www", "/vagrant/www/", :mount_options => [ "dmode=775", "fmode=644" ], :owner => 'www-data', :group => 'www-data'
+  # config.vm.synced_folder ".", "/vagrant/", :mount_options => [ "dmode=777", "fmode=666" ]
+  config.vm.synced_folder "./application", "/var/www/img/", :mount_options => [ "dmode=775", "fmode=644" ], :owner => 'www-data', :group => 'www-data'
 
 end

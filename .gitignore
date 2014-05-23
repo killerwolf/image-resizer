@@ -4,4 +4,5 @@
 .project
 .settings
 .vagrant*
-www/vendor*
+application/vendor*
+application/app/cache*
