@@ -1,0 +1,13 @@
+{
+    "name": "h4md1/img",
+    "authors": [
+        {
+            "name": "Hamdi LAADHARI",
+            "email": "killerwolf06@gmail.com"
+        }
+    ],
+    "require": {
+    	"imagine/imagine":"*"
+
+    }
+}
