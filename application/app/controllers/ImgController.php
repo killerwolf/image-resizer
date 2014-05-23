@@ -18,32 +18,33 @@ class ImgController extends \ControllerBase
 
     public function fitAction()
     {
+        $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
     	$response = new \Phalcon\Http\Response();
     	$response->setHeader("Content-Type", "image/jpg");
-
-    	$this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
-
+        $response->setHeader('Cache-Control', 'public, max-age=86400');
+    	
     	$params = $this->dispatcher->getParams();
-		//var_dump($params);
 
-		$originUriDecoded = $this->di->getService('originUriDecode')->resolve(array($params['origin']));
-		//var_dump($originUriDecoded);
+		$originUriDecoded = $this->di
+                                ->getService('originUriDecode')
+                                ->resolve(array($params['origin']));
 
-		$imagine = $this->di->getService('imagine')->resolve();
-		$thumb = $imagine->open($originUriDecoded)
-    		->thumbnail(
-    			new Box($params['width'], $params['height']), 
-    			Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND
-			)
-    	;
-    	$response->setContent($thumb);
-return $response;
+		$imgContent = $this->di
+                        ->getService('imagine')
+                        ->resolve()
+                        ->open($originUriDecoded)
+                        ->strip()
+                        ->thumbnail(
+                            new Box(
+                                $params['width'], 
+                                $params['height']
+                            ),
+                            Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND
+                        )->interlace(ImageInterface::INTERLACE_PLANE)
+                        ->get('jpeg',['quality' => $params['quality']]);
 
-    }
-
-    public function padAction()
-    {
-		echo 'fit';
+        $response->setContent($imgContent);
+        return $response;
     }
 }
 
