@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
@@ -33,6 +34,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Provisioning Script
   # --------------------
   config.vm.provision "shell", path: "provision/init.sh"
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.limit= "all"
+    ansible.playbook = "provision/playbook.yml"
+  end
+
 
   # Synced Folder
   # --------------------
