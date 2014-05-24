@@ -25,14 +25,10 @@ class ImgController extends \ControllerBase
     	
     	$params = $this->dispatcher->getParams();
 
-		$originUriDecoded = $this->di
-                                ->getService('originUriDecode')
-                                ->resolve(array($params['origin']));
-
 		$imgContent = $this->di
                         ->getService('imagine')
                         ->resolve()
-                        ->open($originUriDecoded)
+                        ->open($params['origin'])
                         ->strip()
                         ->thumbnail(
                             new Box(
@@ -41,7 +37,7 @@ class ImgController extends \ControllerBase
                             ),
                             Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND
                         )->interlace(ImageInterface::INTERLACE_PLANE)
-                        ->get('jpeg',['quality' => $params['quality']]);
+                        ->get('jpeg',['quality' => $params['parameters']['quality']]);
 
         $response->setContent($imgContent);
         return $response;
