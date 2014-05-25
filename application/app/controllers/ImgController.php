@@ -1,7 +1,5 @@
 <?php
 
-use Buzz\Exception\ClientException;
-
 use Imagine\Image\ImageInterface,
     Imagine\Image\Image,
     Imagine\Image\Box,
@@ -13,6 +11,7 @@ class ImgController extends \ControllerBase
 
     public function indexAction()
     {
+        phpinfo();die();
 		echo 'index';
     }
 
@@ -25,10 +24,16 @@ class ImgController extends \ControllerBase
     	
     	$params = $this->dispatcher->getParams();
 
+        $originContent = $this->di
+                        ->getService('guzzle')
+                        ->resolve()
+                        ->get($params['origin'])
+                        ->getBody();
+
 		$imgContent = $this->di
                         ->getService('imagine')
                         ->resolve()
-                        ->open($params['origin'])
+                        ->load($originContent)
                         ->strip()
                         ->thumbnail(
                             new Box(

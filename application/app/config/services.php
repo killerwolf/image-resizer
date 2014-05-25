@@ -74,3 +74,9 @@ $di->set('imagine', function(){
         $className = sprintf('Imagine\%s\Imagine',$drv );
     return new $className;
 },true);
+
+$di->set('response', 'Phalcon\Http\Response');
+
+$di->set('guzzle',function(){
+    return new \GuzzleHttp\Client();
+});

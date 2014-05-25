@@ -7,7 +7,7 @@
         }
     ],
     "require": {
-    	"imagine/imagine":"*"
-
+    	"imagine/imagine":"*",
+        "guzzlehttp/guzzle": "~4.0"
     }
 }
