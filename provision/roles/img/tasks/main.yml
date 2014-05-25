@@ -1,0 +1,7 @@
+---
+   - name: img vhost setup
+     template: src='img.conf' dest='/etc/nginx/sites-available'
+
+   - name: enable cli - phalcon
+     file: src=/etc/nginx/sites-available/img.conf dest=/etc/nginx/sites-enabled/img.conf state=link
+     notify: restart nginx

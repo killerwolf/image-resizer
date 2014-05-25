@@ -2,4 +2,9 @@
 - hosts: all
   sudo: true
   roles:
+    - init
+    - nginx
+    - php
+    - phalcon
     - img
+#    - varnish

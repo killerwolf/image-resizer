@@ -2,15 +2,14 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Base Box
   # --------------------
-  config.vm.box = "precise32"
-  config.vm.box_url = "http://files.vagrantup.com/precise32.box"
+  config.vm.box = "wheezy64nocm"
+  config.vm.box_url = "http://puppet-vagrant-boxes.puppetlabs.com/debian-73-x64-virtualbox-nocm.box"
 
   # Connect to IP
   # --------------------
@@ -24,7 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provider :virtualbox do |v|
     # How much RAM to give the VM (in MB)
     # -----------------------------------
-    v.customize ["modifyvm", :id, "--memory", "500"]
+    v.customize ["modifyvm", :id, "--memory", "512"]
 
     # Uncomment the Bottom two lines to enable muli-core in the VM
     #v.customize ["modifyvm", :id, "--cpus", "2"]
@@ -33,7 +32,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Provisioning Script
   # --------------------
-  config.vm.provision "shell", path: "provision/init.sh"
+  #config.vm.provision "shell", path: "provision/init.sh"
 
   config.vm.provision "ansible" do |ansible|
     ansible.limit= "all"

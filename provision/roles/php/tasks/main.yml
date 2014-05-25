@@ -1,0 +1,13 @@
+---
+   - name: php install
+     action: apt name={{ item }} state=installed
+     with_items:
+        - php5-fpm
+        - php5
+
+   - name: php module install
+     action: apt name={{ item }} state=installed
+     with_items:
+        - php5-curl
+        - php5-cli
+        - php5-imagick
