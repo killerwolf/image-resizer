@@ -8,6 +8,6 @@
     ],
     "require": {
     	"imagine/imagine":"*",
-        "guzzlehttp/guzzle": "~4.0"
+        "sensio/buzz-bundle": "dev-master"
     }
 }

@@ -25,10 +25,10 @@ class ImgController extends \ControllerBase
     	$params = $this->dispatcher->getParams();
 
         $originContent = $this->di
-                        ->getService('guzzle')
+                        ->getService('buzz')
                         ->resolve()
                         ->get($params['origin'])
-                        ->getBody();
+                        ->getContent();
 
 		$imgContent = $this->di
                         ->getService('imagine')

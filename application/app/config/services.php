@@ -77,6 +77,6 @@ $di->set('imagine', function(){
 
 $di->set('response', 'Phalcon\Http\Response');
 
-$di->set('guzzle',function(){
-    return new \GuzzleHttp\Client();
+$di->set('buzz',function(){
+    return new \Buzz\Browser(new \Buzz\Client\Curl());
 });
