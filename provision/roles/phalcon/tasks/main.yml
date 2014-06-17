@@ -26,3 +26,4 @@
    - name: enable cli - phalcon
      file: src=/etc/php5/mods-available/phalcon.ini dest=/etc/php5/cli/conf.d/30-phalcon.ini state=link
 #     when: phalcon_installed.stdout.find('phalcon') == -1
+     notify: restart php5-fpm

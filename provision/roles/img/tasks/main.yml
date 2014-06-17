@@ -2,6 +2,9 @@
    - name: img vhost setup
      template: src='img.conf' dest='/etc/nginx/sites-available'
 
-   - name: enable cli - phalcon
+   - name: img vhost enabled
      file: src=/etc/nginx/sites-available/img.conf dest=/etc/nginx/sites-enabled/img.conf state=link
      notify: restart nginx
+
+   - name: composer install
+     command: su www-data -c "cd /var/www/img && php composer.phar install"

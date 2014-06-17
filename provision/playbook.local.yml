@@ -1,0 +1,7 @@
+---
+  - hosts: 127.0.0.1
+    sudo: true
+    connection: local
+    tasks: 
+    - name: local etc/hosts provision
+      lineinfile: dest=/etc/hosts insertafter=EOF regexp='^192\.168\.5\.100' line='192.168.5.100 img.h4md1.dev'
