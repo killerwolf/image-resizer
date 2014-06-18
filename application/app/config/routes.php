@@ -8,7 +8,7 @@ $router->add("/info", "Img::index");
 
 $router
     ->add(
-    	"/{transformation}/{origin}/{width:([0-9]+)}x{height:([0-9]+)}/{parameters:([a-z\-]+\/[0-9]+)+}/{title:([a-zA-Z0-9_-]+)}.{ext}", 
+    	"/{transformation}/{origin}/{width:([0-9]+)}x{height:([0-9]+)}/{parameters:(.+)}/{title:([a-zA-Z0-9_-]+)}.{ext:([a-zA-Z0-9_-]+)}", 
     	array(        
     		'controller' => 'img',
     		'action' => 'fit',
