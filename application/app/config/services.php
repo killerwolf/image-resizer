@@ -78,5 +78,7 @@ $di->set('imagine', function(){
 $di->set('response', 'Phalcon\Http\Response');
 
 $di->set('buzz',function(){
-    return new \Buzz\Browser(new \Buzz\Client\Curl());
+    $c = new \Buzz\Client\Curl();
+    $c->setTimeout(999);
+    return new \Buzz\Browser($c);
 });
