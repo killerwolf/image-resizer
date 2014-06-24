@@ -24,11 +24,16 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # How much RAM to give the VM (in MB)
     # -----------------------------------
     v.customize ["modifyvm", :id, "--memory", "512"]
+    v.name = "img-service"
 
     # Uncomment the Bottom two lines to enable muli-core in the VM
     #v.customize ["modifyvm", :id, "--cpus", "2"]
     #v.customize ["modifyvm", :id, "--ioapic", "on"]
   end
+
+  config.hostsupdater.remove_on_suspend = true
+  config.vm.hostname = "img.h4md1.dev"
+  config.hostsupdater.aliases = ["img0.h4md1.dev"]
 
   # Provisioning Script
   # --------------------
