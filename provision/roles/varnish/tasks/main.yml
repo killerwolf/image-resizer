@@ -9,7 +9,6 @@
     - http-cache
 
 - name: Add official APT repository
-  when: ansible_os_family == 'Debian'
   sudo: yes
   register: _repo
   apt_repository:
@@ -20,7 +19,6 @@
     - http-cache
 
 - name: Retrieve repo signing key
-  when: ansible_os_family == 'Debian'
   sudo: yes
   register: _repo_key
   apt_key:
@@ -31,7 +29,7 @@
     - http-cache
 
 - name: Update repository caches
-  when: ansible_os_family == 'Debian' and (_repo_key.changed or _repo.changed)
+  when: (_repo_key.changed or _repo.changed)
   sudo: yes
   apt: update_cache=yes
   tags:
@@ -40,7 +38,6 @@
     - http-cache
 
 - name: Install Varnish
-  when: ansible_os_family == 'Debian'
   sudo: yes
   apt: name=varnish state=present
   tags:
@@ -73,3 +70,4 @@
 
 - include: vcl.yml
   name: default
+  state: present
