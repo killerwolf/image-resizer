@@ -3,8 +3,8 @@
   sudo: true
   roles:
     - init
-#    - nginx
-#    - php
-#    - phalcon
-#    - img
-#    - varnish
+    - nginx
+    - php
+    - phalcon
+    - img
+    - varnish
