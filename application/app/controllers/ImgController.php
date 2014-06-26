@@ -15,7 +15,7 @@ class ImgController extends \ControllerBase
 		echo 'index';
     }
 
-    public function fitAction()
+    public function transformAction()
     {
         $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
     	$response = new \Phalcon\Http\Response();
