@@ -11,8 +11,8 @@ class ImgController extends \ControllerBase
 
     public function indexAction()
     {
-        phpinfo();die();
-		echo 'index';
+        $this->view->disable();
+        phpinfo();
     }
 
     public function transformAction()
