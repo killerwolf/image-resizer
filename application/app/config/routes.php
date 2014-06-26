@@ -17,11 +17,19 @@ $router
 		return urldecode( str_replace( '%2E','.',str_replace('.','%',$origin)));
 	})
 	->convert('parameters', function($p){
+
+		//parsing parameters
 		$p = explode('/', $p);
-		
 		foreach ($p as $key => $value) {
 			if($key%2 == 0) $pp[$value]= $p[$key+1];
 		}
+
+		//validation parameters format
+		array_walk($pp,function(&$val,$key){
+			if($key == 'crop-from' and !in_array($val, array('top','bottom','left','right'))){$val = null;}
+			if($key == 'quality' and !is_int((int)$val)){$val = 80;}
+		});
+
 		return $pp;
 	});
 
