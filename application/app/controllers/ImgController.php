@@ -17,7 +17,7 @@ class ImgController extends \ControllerBase
 
     public function transformAction()
     {
-        $this->view->setRenderLevel(\Phalcon\Mvc\View::LEVEL_NO_RENDER);
+        $this->view->disable();
     	$response = new \Phalcon\Http\Response();
     	$response->setHeader("Content-Type", "image/jpg");
         $response->setHeader('Cache-Control', 'public, max-age=86400');
@@ -30,11 +30,13 @@ class ImgController extends \ControllerBase
                         ->get($params['origin'])
                         ->getContent();
 
-		$imgContent = $this->di
+        $imgObject = $this->di
                         ->getService('imagine')
                         ->resolve()
                         ->load($originContent)
-                        ->strip()
+                        ->strip();
+
+		$imgContent = $imgObject
                         ->thumbnail(
                             new Box(
                                 $params['width'], 
@@ -46,6 +48,11 @@ class ImgController extends \ControllerBase
 
         $response->setContent($imgContent);
         return $response;
+    }
+
+    public function errorAction()
+    {
+
     }
 }
 
