@@ -8,6 +8,6 @@
     ],
     "require": {
     	"imagine/imagine":"*",
-        "sensio/buzz-bundle": "dev-master"
+        "kriswallsmith/buzz": "dev-master"
     }
 }
