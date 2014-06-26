@@ -1,0 +1,10 @@
+language: php
+php:
+  - "5.5"
+  - "5.4"
+  - "5.3"
+before_script: 
+  - cd application && php composer.phar install
+script: 
+  - php vendor/bin/phpcs src --standard=PSR2
+  - php -d date.timezone=Europe/Paris vendor/bin/phpmd src text codesize,unusedcode,naming,design,controversial
