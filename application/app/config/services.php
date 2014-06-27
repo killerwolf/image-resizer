@@ -2,17 +2,12 @@
 
 use Phalcon\DI;
 use Phalcon\Mvc\View;
-use Phalcon\Mvc\Url as UrlResolver;
-use Phalcon\Db\Adapter\Pdo\Mysql as DbAdapter;
 use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
-use Phalcon\Mvc\Model\Metadata\Memory as MetaDataAdapter;
-use Phalcon\Session\Adapter\Files as SessionAdapter;
-use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Mvc\Dispatcher as MvcDispatcher;
 
 $di = new DI();
 
-$di->set('dispatcher', function(){
+$di->set('dispatcher', function () {
     return new MvcDispatcher();
 
 }, true);
@@ -44,12 +39,13 @@ $di->set('view', function () use ($config) {
     return $view;
 }, true);
 
-$di->set('router', function(){
+$di->set('router', function () {
     require __DIR__.'/routes.php';
+
     return $router;
 });
 
-$di->set('originUriDecode', function($data){
+$di->set('originUriDecode', function ($data) {
     return urldecode(
         str_replace(
             '%2E',
@@ -63,7 +59,7 @@ $di->set('originUriDecode', function($data){
     );
 });
 
-$di->set('imagine', function(){
+$di->set('imagine', function () {
     if (class_exists('\Gmagick')) {
             $drv = 'Gmagick';
         } elseif (class_exists('\Imagick')) {
@@ -72,13 +68,15 @@ $di->set('imagine', function(){
             $drv = 'Gd';
         }
         $className = sprintf('Imagine\%s\Imagine',$drv );
+
     return new $className;
 },true);
 
 $di->set('response', 'Phalcon\Http\Response');
 
-$di->set('buzz',function(){
+$di->set('buzz',function () {
     $c = new \Buzz\Client\Curl();
     $c->setTimeout(999);
+
     return new \Buzz\Browser($c);
 });

@@ -18,11 +18,11 @@ class ImgController extends \ControllerBase
     public function transformAction()
     {
         $this->view->disable();
-    	$response = new \Phalcon\Http\Response();
-    	$response->setHeader("Content-Type", "image/jpg");
+        $response = new \Phalcon\Http\Response();
+        $response->setHeader("Content-Type", "image/jpg");
         $response->setHeader('Cache-Control', 'public, max-age=86400');
-    	
-    	$params = $this->dispatcher->getParams();
+
+        $params = $this->dispatcher->getParams();
 
         $originContent = $this->di
                         ->getService('buzz')
@@ -36,10 +36,10 @@ class ImgController extends \ControllerBase
                         ->load($originContent)
                         ->strip();
 
-		$imgContent = $imgObject
+        $imgContent = $imgObject
                         ->thumbnail(
                             new Box(
-                                $params['width'], 
+                                $params['width'],
                                 $params['height']
                             ),
                             Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND
@@ -47,6 +47,7 @@ class ImgController extends \ControllerBase
                         ->get('jpeg',['quality' => $params['parameters']['quality']]);
 
         $response->setContent($imgContent);
+
         return $response;
     }
 
@@ -55,4 +56,3 @@ class ImgController extends \ControllerBase
 
     }
 }
-
