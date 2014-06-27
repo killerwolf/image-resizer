@@ -6,5 +6,5 @@ php:
 before_script: 
   - cd application && php composer.phar install
 script: 
-  - php application/vendor/bin/phpcs application/app --standard=PSR2
-  - cd application && php -d date.timezone=Europe/Paris vendor/bin/phpmd app text codesize,unusedcode,naming,design,controversial
+  - php vendor/bin/phpcs app --standard=PSR2
+  - php -d date.timezone=Europe/Paris vendor/bin/phpmd app text codesize,unusedcode,naming,design,controversial
