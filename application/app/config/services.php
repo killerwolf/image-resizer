@@ -40,9 +40,7 @@ $di->set('view', function () use ($config) {
 }, true);
 
 $di->set('router', function () {
-    require __DIR__.'/routes.php';
-
-    return $router;
+    return require(__DIR__.'/routes.php');
 });
 
 $di->set('originUriDecode', function ($data) {
