@@ -20,6 +20,7 @@ $router
 
         //parsing parameters
         $p = explode('/', $p);
+        $pp = [];
         foreach ($p as $key => $value) {
             if($key%2 == 0) $pp[$value]= $p[$key+1];
         }
