@@ -1,13 +1,24 @@
 ---
-   - name: php install
-     action: apt name={{ item }} state=installed
-     with_items:
-        - php5-fpm
-        - php5
 
-   - name: php module install
-     action: apt name={{ item }} state=installed
-     with_items:
-        - php5-curl
-        - php5-cli
-        - php5-imagick
+  - name: Add wheezy-php55 Repository
+    sudo: yes
+    apt_repository: repo='deb http://packages.dotdeb.org wheezy-php55 all' state=present
+
+  - name: Add wheezy-php55 GPG-key
+    sudo: yes
+    apt_key:
+      url: "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xA2098A6E"
+      state: present
+
+  - name: php install
+    action: apt name={{ item }} state=installed
+    with_items:
+       - php5-fpm
+       - php5
+
+  - name: php module install
+    action: apt name={{ item }} state=installed
+    with_items:
+       - php5-curl
+       - php5-cli
+       - php5-imagick
