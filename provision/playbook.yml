@@ -1,10 +1,11 @@
 ---
-- hosts: all
-  sudo: true
-  roles:
-    - init
-    - nginx
-    - php
-    - phalcon
-    - img
-    - varnish
+  - hosts: all
+    sudo: true
+    roles:
+      - init
+      - nginx
+      - php
+      - {role: praseodym.newrelic-php, newrelic_appname: img.h4md1.dev, newrelic_license_key: ad1742942a615a8c916aba5c8f03b82e04b1af8c}
+      - phalcon
+      - img
+      - varnish
