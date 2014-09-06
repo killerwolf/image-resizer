@@ -8,6 +8,6 @@
   apt: pkg={{ item }} state=latest
   with_items: ["nginx"]
 
-- name: Delete default vhost
+- name: Disable default vhost
   file: path=/etc/nginx/sites-enabled/default state=absent
   notify: restart nginx

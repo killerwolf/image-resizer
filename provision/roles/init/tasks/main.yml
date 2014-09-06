@@ -3,8 +3,13 @@
   sudo: yes
   apt: update_cache=yes
 
-- name: Set server local
-  command: "echo \"Europe/Paris\" | sudo tee /etc/timezone && dpkg-reconfigure --frontend noninteractive tzdata"
+- name: add timezone to /etc/timezone
+  template: src=timezone dest=/etc/timezone owner=root group=root mode=0644
+  when: ansible_date_time.tz != "CEST"
+  notify: update timezone
+
+- name: set server local
+  locale_gen: name=fr_FR.UTF-8 state=present
 
 - name: Install System Packages
   sudo: yes
