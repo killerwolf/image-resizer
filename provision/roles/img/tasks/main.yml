@@ -7,4 +7,6 @@
      notify: restart nginx
 
    - name: composer install
-     command: su www-data -c "cd /var/www/img && php composer.phar install"
+     command: php composer.phar install
+     args:
+       chdir: /var/www/img
