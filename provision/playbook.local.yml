@@ -2,5 +2,5 @@
   - hosts: 127.0.0.1
     connection: local
     tasks:
-    - command: ansible-galaxy install --role-file=../provision/galaxy.txt
+    - command: ansible-galaxy install --role-file=../provision/requirements.txt --roles-path=../provision/roles --force
       sudo: false
