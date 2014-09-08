@@ -6,3 +6,4 @@
 .vagrant*
 application/vendor*
 application/app/cache*
+provision/roles/resmo.ntp
