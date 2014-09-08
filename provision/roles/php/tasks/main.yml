@@ -1,14 +1,9 @@
 ---
 
-  - name: Add wheezy-php55 Repository
-    sudo: yes
-    apt_repository: repo='deb http://packages.dotdeb.org wheezy-php55 all' state=present
-
-  - name: Add wheezy-php55 GPG-key
-    sudo: yes
-    apt_key:
-      url: "http://keyserver.ubuntu.com/pks/lookup?op=get&search=0xA2098A6E"
-      state: present
+# phalcon is not yet compatible with php5.6
+#  - name: Add php56 Repository
+#    sudo: yes
+#    apt_repository: repo='ppa:ondrej/php5-5.6'
 
   - name: php install
     action: apt name={{ item }} state=installed

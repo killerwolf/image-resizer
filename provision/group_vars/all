@@ -1,1 +1,3 @@
+init_timezone: 'Europe/Paris'
+ntp_config_server: [2.ubuntu.pool.ntp.org, 1.ubuntu.pool.ntp.org]
 varnish_version: 4.0

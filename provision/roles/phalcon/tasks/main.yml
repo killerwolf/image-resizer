@@ -1,29 +1,7 @@
 ---
-#   - command : php -m|grep phalcon
-#     register : phalcon_installed 
+  - name: Add phalcon Repository
+    sudo: yes
+    apt_repository: repo='ppa:phalcon/stable'
 
-   - name: php dev packages install
-     action: apt name={{ item }} state=installed
-     with_items: ["php5-dev", "libpcre3-dev"]
-#     when: phalcon_installed.stdout.find('phalcon') == -1
-
-   - name: phalcon-php github checkout
-     git: repo=https://github.com/phalcon/cphalcon.git dest=/tmp/cphalcon
-#     when: phalcon_installed.stdout.find('phalcon') == -1
-
-   - name: phalcon make install
-     shell: cd /tmp/cphalcon/build && ./install
-#     when: phalcon_installed.stdout.find('phalcon') == -1
-
-   - name: copy phalcon configuration file
-     template: src='phalcon.ini' dest='/etc/php5/mods-available'
-#     when: phalcon_installed.stdout.find('phalcon') == -1
-
-   - name: enable fpm - phalcon
-     file: src=/etc/php5/mods-available/phalcon.ini dest=/etc/php5/fpm/conf.d/30-phalcon.ini state=link
-#     when: phalcon_installed.stdout.find('phalcon') == -1
-
-   - name: enable cli - phalcon
-     file: src=/etc/php5/mods-available/phalcon.ini dest=/etc/php5/cli/conf.d/30-phalcon.ini state=link
-#     when: phalcon_installed.stdout.find('phalcon') == -1
-     notify: restart php5-fpm
+  - name: Install PhalconPHP
+    apt: name=php5-phalcon state=installed update_cache=yes
