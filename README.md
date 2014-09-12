@@ -1,5 +1,5 @@
 #IMG web service resizing
 
-this project is powered by nginx, php5.4 with PhalconPHP module
+this project is powered by nginx, php5.5 (fpm) with PhalconPHP (1.3.2) module
 
-`vagrant up` and you're good to go
+`vagrant up` (with ansible installed) and you're good to go
