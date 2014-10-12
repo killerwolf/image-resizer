@@ -17,3 +17,6 @@
        - php5-curl
        - php5-cli
        - php5-imagick
+
+  - name: php set timezone
+    lineinfile: dest=/etc/php5/fpm/php.ini regexp='date.timezone' line='date.timezone=Europe/Paris'
