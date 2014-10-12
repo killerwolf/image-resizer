@@ -26,6 +26,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.playbook = "provision/playbook.yml"
   end
 
-  config.vm.synced_folder "./application", "/var/www/img/", :mount_options => [ "dmode=775", "fmode=644" ], :owner => 'www-data', :group => 'www-data'
+  config.vm.synced_folder "./application", "/var/www/img/", :mount_options => [ "dmode=775", "fmode=646" ], :owner => 'www-data', :group => 'www-data'
 
 end
