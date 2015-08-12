@@ -8,3 +8,4 @@ application/vendor*
 application/app/cache*
 provision/roles/resmo.ntp
 provision/roles/AbdoulNdiaye.Blackfire
+provision/roles/geerlingguy.varnish

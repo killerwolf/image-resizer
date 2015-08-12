@@ -8,5 +8,5 @@
       - php
       - phalcon
       - AbdoulNdiaye.Blackfire
-      - varnish
+      - geerlingguy.varnish
       - img
