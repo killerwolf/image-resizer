@@ -1,5 +1,7 @@
 # Image resizer
 
+[![Build Status](https://travis-ci.org/killerwolf/image-resizer.svg?branch=master)](https://travis-ci.org/killerwolf/image-resizer)
+
 > this is a web application that resizes images
 
 ## Dependencies
