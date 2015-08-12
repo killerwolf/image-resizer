@@ -7,5 +7,6 @@
       - nginx
       - php
       - phalcon
+      - AbdoulNdiaye.Blackfire
       - varnish
       - img

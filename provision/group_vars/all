@@ -1,3 +1,5 @@
 init_timezone: 'Europe/Paris'
 ntp_config_server: [2.ubuntu.pool.ntp.org, 1.ubuntu.pool.ntp.org]
 varnish_version: 4.0
+blackfire_server_id: 71173f4d-cd61-47bc-acb6-a2d5b829bdd2
+blackfire_server_token: bbf17d3f1dd77a8e9eabb19ac407a302d41478ee0098f70cfb1316eb6d872c02
