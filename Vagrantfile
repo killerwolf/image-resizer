@@ -23,6 +23,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.provision "ansible" do |ansible|
     ansible.limit= "all"
+    ansible.playbook = "provision/playbook.local.yml"
+  end
+
+  config.vm.provision "ansible" do |ansible|
+    ansible.limit= "all"
     ansible.playbook = "provision/playbook.yml"
   end
 
