@@ -1,10 +1,10 @@
 <?php
 
-use Imagine\Image\ImageInterface,
-    Imagine\Image\Image,
-    Imagine\Image\Box,
-    Imagine\Image\Point,
-    Imagine\Image\Color;
+use Imagine\Image\ImageInterface;
+use Imagine\Image\Image;
+use Imagine\Image\Box;
+use Imagine\Image\Point;
+use Imagine\Image\Color;
 
 class ImgController extends \ControllerBase
 {
@@ -44,7 +44,7 @@ class ImgController extends \ControllerBase
                             ),
                             Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND
                         )->interlace(ImageInterface::INTERLACE_PLANE)
-                        ->get('jpeg',['quality' => $params['parameters']['quality']]);
+                        ->get('jpeg', ['quality' => $params['parameters']['quality']]);
 
         $response->setContent($imgContent);
 
