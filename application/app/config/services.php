@@ -60,19 +60,19 @@ $di->set('originUriDecode', function ($data) {
 $di->set('imagine', function () {
     if (class_exists('\Gmagick')) {
             $drv = 'Gmagick';
-        } elseif (class_exists('\Imagick')) {
-            $drv = 'Imagick';
-        } else {
-            $drv = 'Gd';
-        }
-        $className = sprintf('Imagine\%s\Imagine',$drv );
+    } elseif (class_exists('\Imagick')) {
+        $drv = 'Imagick';
+    } else {
+        $drv = 'Gd';
+    }
+        $className = sprintf('Imagine\%s\Imagine', $drv);
 
     return new $className;
-},true);
+}, true);
 
 $di->set('response', 'Phalcon\Http\Response');
 
-$di->set('buzz',function () {
+$di->set('buzz', function () {
     $c = new \Buzz\Client\Curl();
     $c->setTimeout(999);
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9f43a5951dc8e85aa82df7a5606465a3",
+    "hash": "a642b43cc88eb7c95119f6d53660ca02",
     "packages": [
         {
             "name": "imagine/imagine",

@@ -27,7 +27,7 @@ class ImgController extends \ControllerBase
         $originContent = $this->di
                         ->getService('buzz')
                         ->resolve()
-                        ->get($params['origin'])
+                        ->get($params['o'])
                         ->getContent();
 
         $imgObject = $this->di
@@ -39,8 +39,8 @@ class ImgController extends \ControllerBase
         $imgContent = $imgObject
                         ->thumbnail(
                             new Box(
-                                $params['width'],
-                                $params['height']
+                                $params['w'],
+                                $params['h']
                             ),
                             Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND
                         )->interlace(ImageInterface::INTERLACE_PLANE)
