@@ -7,7 +7,14 @@ $loader = new \Phalcon\Loader();
  */
 $loader->registerDirs(
     array(
-        $config->application->controllersDir,
         $config->application->modelsDir
     )
-)->register();
+);
+
+$loader->registerNamespaces(
+    array(
+        'H4md1\ImageResizer\Controller' => $config->application->controllersDir,
+    )
+);
+
+$loader->register();

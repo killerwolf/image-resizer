@@ -1,12 +1,14 @@
 <?php
 
+namespace H4md1\ImageResizer\Controller;
+
 use Imagine\Image\ImageInterface;
 use Imagine\Image\Image;
 use Imagine\Image\Box;
 use Imagine\Image\Point;
 use Imagine\Image\Color;
 
-class ImgController extends \ControllerBase
+class ImgController extends ControllerBase
 {
 
     public function indexAction()
@@ -42,9 +44,9 @@ class ImgController extends \ControllerBase
                                 $params['w'],
                                 $params['h']
                             ),
-                            Imagine\Image\ImageInterface::THUMBNAIL_OUTBOUND
+                            ImageInterface::THUMBNAIL_OUTBOUND
                         )->interlace(ImageInterface::INTERLACE_PLANE)
-                        ->get('jpeg', ['quality' => $params['parameters']['quality']]);
+                        ->get('jpeg', ['quality' => $params['p']['quality']]);
 
         $response->setContent($imgContent);
 

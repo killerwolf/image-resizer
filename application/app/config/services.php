@@ -33,7 +33,7 @@ $di->set('view', function () use ($config) {
 
             return $volt;
         },
-        '.phtml' => 'Phalcon\Mvc\View\Engine\Php'
+        '.phtml' => '\Phalcon\Mvc\View\Engine\Php'
     ));
 
     return $view;
@@ -65,12 +65,12 @@ $di->set('imagine', function () {
     } else {
         $drv = 'Gd';
     }
-        $className = sprintf('Imagine\%s\Imagine', $drv);
+        $className = sprintf('\Imagine\%s\Imagine', $drv);
 
     return new $className;
 }, true);
 
-$di->set('response', 'Phalcon\Http\Response');
+$di->set('response', '\Phalcon\Http\Response');
 
 $di->set('buzz', function () {
     $c = new \Buzz\Client\Curl();
